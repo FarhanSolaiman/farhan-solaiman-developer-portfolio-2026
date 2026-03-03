@@ -1,0 +1,243 @@
+/* ============================================================
+   VARIABLES.CSS — Design Tokens & Custom Properties
+   Grilled Pixels-inspired — Farhan Solaiman
+   ============================================================ */
+
+:root {
+
+  /* ----------------------------------------------------------
+     COLOR PALETTE
+  ---------------------------------------------------------- */
+
+  /* Core backgrounds */
+  --bg:              #000000;
+  --bg-elevated:     #0a0a0a;
+  --bg-subtle:       #111111;
+
+  /* Primary text */
+  --text:            #FFFFFF;
+  --text-muted:      rgba(255, 255, 255, 0.65);
+  --text-faint:      rgba(255, 255, 255, 0.32);
+
+  /* Accent — vibrant green */
+  --accent:          #00E878;
+  --accent-dim:      rgba(0, 232, 120, 0.20);
+  --accent-glow:     rgba(0, 232, 120, 0.10);
+  --accent-hover:    #00ff87;
+  --accent-dark:     #00b85e;
+
+  /* Surface / glass */
+  --surface:         rgba(255, 255, 255, 0.05);
+  --surface-hover:   rgba(255, 255, 255, 0.10);
+  --surface-active:  rgba(255, 255, 255, 0.15);
+
+  /* Borders & dividers */
+  --border:          rgba(255, 255, 255, 0.09);
+  --border-accent:   rgba(0, 232, 120, 0.35);
+
+  /* Gradient stops */
+  --gradient-green:  linear-gradient(135deg, #00E878 0%, #006b38 100%);
+  --gradient-blue:   linear-gradient(135deg, #0066ff 0%, #001a4d 100%);
+  --gradient-purple: linear-gradient(135deg, #8b5cf6 0%, #1e0a4a 100%);
+  --gradient-dark:   linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 100%);
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY SCALE — Fluid with clamp()
+     GRILLED PIXELS: Massive scale, extreme contrast
+  ---------------------------------------------------------- */
+
+  /* Hero — fills viewport, editorial impact */
+  --fs-hero:     clamp(4rem, 13vw, 12rem);
+
+  /* Display — section headings, editorial */
+  --fs-display:  clamp(2.5rem, 6vw, 5rem);
+
+  /* Marquee text — large, unmissable */
+  --fs-marquee:  clamp(1.75rem, 3.5vw, 3rem);
+
+  /* Headings */
+  --fs-h1:       clamp(2rem,   4vw,  3.5rem);
+  --fs-h2:       clamp(1.75rem, 3vw, 2.5rem);
+  --fs-h3:       clamp(1.25rem, 2vw, 1.75rem);
+  --fs-h4:       clamp(1.1rem,  1.5vw, 1.3rem);
+
+  /* Body */
+  --fs-lg:       clamp(1.05rem, 1.5vw, 1.15rem);
+  --fs-base:     1rem;
+  --fs-sm:       0.9rem;
+  --fs-xs:       0.8rem;
+
+  /* Mono / Labels — tiny, wide-tracked */
+  --fs-label:    0.7rem;
+  --fs-badge:    0.68rem;
+  --fs-mono-sm:  0.78rem;
+
+  /* Font families */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Font weights */
+  --fw-regular:   400;
+  --fw-medium:    500;
+  --fw-semibold:  600;
+  --fw-bold:      800;
+
+  /* Letter spacing */
+  --ls-tight:     -0.03em;
+  --ls-normal:    0em;
+  --ls-wide:      0.05em;
+  --ls-wider:     0.10em;
+  --ls-widest:    0.18em;
+  --ls-mega:      0.25em;
+
+  /* Line heights */
+  --lh-tight:     0.9;
+  --lh-snug:      1.15;
+  --lh-normal:    1.6;
+  --lh-relaxed:   1.75;
+
+  /* ----------------------------------------------------------
+     SPACING SCALE — 4px base
+  ---------------------------------------------------------- */
+
+  --space-1:   0.25rem;   /*  4px */
+  --space-2:   0.5rem;    /*  8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-16:  4rem;      /* 64px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+  --space-32:  8rem;      /* 128px */
+
+  /* Fluid section padding — GRILLED PIXELS: extreme vertical space */
+  --section-py: clamp(6rem, 12vw, 10rem);
+  --section-px: clamp(1.25rem, 5vw, 3rem);
+
+  /* ----------------------------------------------------------
+     EASING CURVES
+  ---------------------------------------------------------- */
+
+  --ease-snappy:   cubic-bezier(0.8, 0, 0, 1);
+  --ease-medium:   cubic-bezier(0.43, 0.195, 0.02, 1);
+  --ease-smooth:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:      cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-premium:  cubic-bezier(.8, 0, .2, 1);
+
+  /* ----------------------------------------------------------
+     DURATIONS
+  ---------------------------------------------------------- */
+
+  --dur-fast:    150ms;
+  --dur-normal:  300ms;
+  --dur-medium:  500ms;
+  --dur-slow:    700ms;
+  --dur-slower:  900ms;
+  --dur-lazy:    1200ms;
+
+  /* ----------------------------------------------------------
+     BORDER RADIUS
+  ---------------------------------------------------------- */
+
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-full: 9999px;
+
+  /* ----------------------------------------------------------
+     SHADOWS & GLOWS
+  ---------------------------------------------------------- */
+
+  --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:     0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg:     0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-xl:     0 16px 48px rgba(0, 0, 0, 0.7);
+
+  --glow-accent:    0 0 20px rgba(0, 232, 120, 0.25), 0 0 60px rgba(0, 232, 120, 0.10);
+  --glow-accent-sm: 0 0 10px rgba(0, 232, 120, 0.20);
+  --glow-accent-lg: 0 0 40px rgba(0, 232, 120, 0.30), 0 0 100px rgba(0, 232, 120, 0.12);
+
+  /* ----------------------------------------------------------
+     Z-INDEX SCALE
+  ---------------------------------------------------------- */
+
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:    10;
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-overlay:   300;
+  --z-modal:     400;
+  --z-toast:     500;
+  --z-loader:    1000;
+
+  /* ----------------------------------------------------------
+     LAYOUT
+  ---------------------------------------------------------- */
+
+  --container-max:  1400px;
+  --container-wide: 1600px;
+  --container-full: 100%;
+  --nav-height:     72px;
+  --nav-height-mob: 60px;
+
+  /* Section spacers */
+  --spacer-sm: 100px;
+  --spacer-lg: 200px;
+
+  /* Tile & muted */
+  --tile-bg:         #171717;
+  --text-muted-dark: #777;
+
+  /* Grid */
+  --grid-cols:      12;
+  --grid-gap:       clamp(1rem, 2.5vw, 2rem);
+
+  /* ----------------------------------------------------------
+     COMPONENT TOKENS
+  ---------------------------------------------------------- */
+
+  /* Buttons */
+  --btn-height:      48px;
+  --btn-height-sm:   36px;
+  --btn-px:          1.75rem;
+  --btn-radius:      var(--radius-full);
+  --btn-fs:          var(--fs-sm);
+  --btn-fw:          var(--fw-semibold);
+  --btn-ls:          0.08em;
+
+  /* Cards */
+  --card-radius:     var(--radius-lg);
+  --card-border:     1px solid var(--border);
+  --card-bg:         var(--surface);
+  --card-pad:        var(--space-6);
+
+  /* Nav */
+  --nav-blur:        16px;
+  --nav-bg-scroll:   rgba(0, 0, 0, 0.90);
+
+  /* Form */
+  --input-height:    52px;
+  --input-radius:    var(--radius-md);
+  --input-bg:        rgba(255, 255, 255, 0.05);
+  --input-border:    var(--border);
+  --input-focus:     var(--accent);
+
+}
+
+/* ----------------------------------------------------------
+   BREAKPOINTS (reference comments — use in media queries)
+   --bp-sm:   480px   Small mobile
+   --bp-md:   768px   Mobile / tablet boundary
+   --bp-lg:   1024px  Tablet
+   --bp-xl:   1200px  Desktop
+   --bp-2xl:  1400px  Wide desktop
+---------------------------------------------------------- */

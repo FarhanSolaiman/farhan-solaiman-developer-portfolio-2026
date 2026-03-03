@@ -1,0 +1,178 @@
+/* ============================================================
+   LAYOUT.CSS — Container, Sections, Grid Utilities
+   Grilled Pixels-inspired — Farhan Solaiman
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   CONTAINER
+   Grilled Pixels: content not always constrained — some sections
+   break out to full-width for editorial impact
+---------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--section-px);
+}
+
+.container--wide {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: var(--section-px);
+}
+
+.container--narrow {
+  width: 100%;
+  max-width: 800px;
+  margin-inline: auto;
+  padding-inline: var(--section-px);
+}
+
+.container--form {
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+  padding-inline: var(--section-px);
+}
+
+/* Full-bleed — breaks out of any parent container */
+.full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* ----------------------------------------------------------
+   SECTIONS — Grilled Pixels: extreme vertical whitespace
+---------------------------------------------------------- */
+
+section {
+  position: relative;
+  padding-block: var(--section-py);
+  overflow: hidden;
+}
+
+/* Section header block */
+.section-header {
+  margin-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.section-header--center {
+  text-align: center;
+}
+
+/* ----------------------------------------------------------
+   12-COLUMN CSS GRID UTILITY
+   Supports asymmetric Grilled Pixels layouts (7+5, 6+6, 8+4)
+---------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  gap: var(--grid-gap);
+}
+
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* ----------------------------------------------------------
+   FLEX UTILITIES
+---------------------------------------------------------- */
+
+.flex         { display: flex; }
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-col     { display: flex; flex-direction: column; }
+.flex-wrap    { display: flex; flex-wrap: wrap; }
+
+.items-center  { align-items: center; }
+.items-start   { align-items: flex-start; }
+.items-end     { align-items: flex-end; }
+
+.justify-center  { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-start   { justify-content: flex-start; }
+
+.gap-2  { gap: var(--space-2); }
+.gap-3  { gap: var(--space-3); }
+.gap-4  { gap: var(--space-4); }
+.gap-6  { gap: var(--space-6); }
+.gap-8  { gap: var(--space-8); }
+.gap-10 { gap: var(--space-10); }
+.gap-12 { gap: var(--space-12); }
+
+/* ----------------------------------------------------------
+   SPACING UTILITIES
+---------------------------------------------------------- */
+
+.mt-2  { margin-top: var(--space-2); }
+.mt-4  { margin-top: var(--space-4); }
+.mt-6  { margin-top: var(--space-6); }
+.mt-8  { margin-top: var(--space-8); }
+.mt-12 { margin-top: var(--space-12); }
+
+.mb-2  { margin-bottom: var(--space-2); }
+.mb-4  { margin-bottom: var(--space-4); }
+.mb-6  { margin-bottom: var(--space-6); }
+.mb-8  { margin-bottom: var(--space-8); }
+.mb-12 { margin-bottom: var(--space-12); }
+
+.pt-4  { padding-top: var(--space-4); }
+.pb-4  { padding-bottom: var(--space-4); }
+.py-4  { padding-block: var(--space-4); }
+.py-8  { padding-block: var(--space-8); }
+
+/* ----------------------------------------------------------
+   DISPLAY UTILITIES
+---------------------------------------------------------- */
+
+.hidden        { display: none; }
+.block         { display: block; }
+.inline-block  { display: inline-block; }
+.relative      { position: relative; }
+.absolute      { position: absolute; }
+.fixed         { position: fixed; }
+
+/* ----------------------------------------------------------
+   TEXT ALIGNMENT
+---------------------------------------------------------- */
+
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
+
+/* ----------------------------------------------------------
+   WIDTH UTILITIES
+---------------------------------------------------------- */
+
+.w-full { width: 100%; }
+
+/* ----------------------------------------------------------
+   OVERFLOW
+---------------------------------------------------------- */
+
+.overflow-hidden  { overflow: hidden; }
+.overflow-visible { overflow: visible; }
+
+/* ----------------------------------------------------------
+   Z-INDEX UTILITIES
+---------------------------------------------------------- */
+
+.z-raised   { z-index: var(--z-raised); }
+.z-overlay  { z-index: var(--z-overlay); }
+.z-modal    { z-index: var(--z-modal); }

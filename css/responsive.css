@@ -1,0 +1,473 @@
+/* ============================================================
+   RESPONSIVE.CSS — Media Queries & Breakpoint Overrides
+   Grilled Pixels-inspired — Farhan Solaiman
+
+   Breakpoints:
+   --bp-2xl: 1400px  (wide desktop)
+   --bp-xl:  1200px  (desktop / tablet boundary)
+   --bp-lg:  1024px  (tablet)
+   --bp-md:  768px   (tablet / mobile boundary)
+   --bp-sm:  480px   (small mobile)
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   SMALL TABLETS — min-width: 37.5em (600px)
+   Project grid goes to 3 columns; nav padding widens
+---------------------------------------------------------- */
+
+@media (min-width: 37.5em) {
+
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.875rem;
+  }
+
+  .nav__inner {
+    padding-inline: 1.875rem;
+  }
+
+}
+
+/* ----------------------------------------------------------
+   DESKTOP — min-width: 56.25em (900px)
+   Hero name shrinks to editorial scale; spacers go large
+---------------------------------------------------------- */
+
+@media (min-width: 56.25em) {
+
+  /* On wider screens the clamp() fluid range already scales well;
+     boost spacers to large editorial rhythm */
+  .spacer {
+    height: var(--spacer-lg);
+  }
+
+}
+
+/* ----------------------------------------------------------
+   WIDE DESKTOP — min-width: 95.3125em (1525px)
+   About portrait gets a little more room
+---------------------------------------------------------- */
+
+@media (min-width: 95.3125em) {
+
+  /* About portrait: larger on wide screens */
+  .about__portrait {
+    max-width: 420px;
+  }
+
+}
+
+/* ----------------------------------------------------------
+   DESKTOP — max-width: 1200px
+---------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+
+  /* Nav: tighten gap */
+  .nav__links {
+    gap: var(--space-8);
+  }
+
+  /* About: slightly narrow the heading side */
+  .about__split {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 5rem);
+  }
+
+  /* Experience: allow period column to shrink */
+  .exp-item {
+    grid-template-columns: 180px 1px 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+}
+
+/* ----------------------------------------------------------
+   TABLET — max-width: 1024px
+---------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+
+  /* About: stack to single column, heading full-width */
+  .about__split {
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .about__left {
+    position: static;
+  }
+
+  .about__right {
+    padding-top: 0;
+  }
+
+  /* About stats: 2x2 grid */
+  .about__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Service item: adjust layout on tablet */
+  .service-item__inner {
+    grid-template-columns: 64px 1fr 40px;
+    gap: var(--space-6);
+  }
+
+  /* Experience: compress period column */
+  .exp-item {
+    grid-template-columns: 160px 1px 1fr;
+    gap: var(--space-5);
+  }
+
+  /* Skills: keep 2 columns */
+  .skills__grid {
+    gap: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+  }
+
+}
+
+/* ----------------------------------------------------------
+   MOBILE — max-width: 768px
+   Grilled Pixels: generous mobile padding, strong hierarchy
+---------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* --- NAV --- */
+  .nav {
+    height: var(--nav-height-mob);
+  }
+
+  .nav__links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* --- HERO --- */
+  #hero {
+    padding-top: var(--nav-height-mob);
+    justify-content: flex-end;
+  }
+
+  .hero__inner {
+    padding-bottom: clamp(4rem, 8vw, 6rem);
+    padding-top: clamp(3rem, 6vw, 5rem);
+  }
+
+  /* Scroll indicator — hide on small mobile for cleanliness */
+  .scroll-line-wrap {
+    display: none;
+  }
+
+  /* --- MARQUEE --- */
+  .marquee__text {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    padding-inline: clamp(1rem, 3vw, 2rem);
+  }
+
+  .marquee__separator {
+    width: 7px;
+    height: 7px;
+  }
+
+  /* --- ABOUT --- */
+  .about__split {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .about__heading {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .about__portrait {
+    max-width: 300px;
+  }
+
+  .about__stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  /* --- SERVICES --- */
+  .service-item__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    padding-block: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .service-item__number {
+    font-size: calc(var(--fs-label) * 1.1);
+  }
+
+  .service-item__icon {
+    display: none;
+  }
+
+  /* --- PROJECTS --- */
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* --- EXPERIENCE --- */
+  .exp-item {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding-block: clamp(2rem, 4vw, 3rem);
+  }
+
+  .exp-item__divider {
+    display: none;
+  }
+
+  .exp-item__year {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  /* --- SKILLS --- */
+  .skills__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* --- CONTACT --- */
+  .cta-heading {
+    font-size: clamp(1.75rem, 7vw, 3.5rem);
+  }
+
+  .contact-social-grid {
+    grid-auto-flow: row;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    padding-block: var(--space-6);
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  /* --- SCROLL TOP --- */
+  .scroll-top {
+    bottom: var(--space-4);
+    right: var(--space-4);
+  }
+
+  /* --- TOAST --- */
+  .toast {
+    width: calc(100% - 2rem);
+    white-space: normal;
+    bottom: var(--space-4);
+  }
+
+}
+
+/* ----------------------------------------------------------
+   SMALL MOBILE — max-width: 480px
+   Name still massive but scaled down
+---------------------------------------------------------- */
+
+@media (max-width: 480px) {
+
+  :root {
+    /* Tighten section px on very small screens */
+    --section-px: 1.25rem;
+  }
+
+  /* About portrait smaller on tiny screens */
+  .about__portrait {
+    max-width: 260px;
+  }
+
+  /* Mobile menu links slightly smaller */
+  .mobile-menu__link {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+
+  /* CTA heading */
+  .cta-heading {
+    font-size: clamp(1.5rem, 8vw, 2.25rem);
+  }
+
+  /* Service number smaller */
+  .service-item__number {
+    font-size: var(--fs-label);
+  }
+
+}
+
+/* ----------------------------------------------------------
+   VERY SMALL MOBILE — max-width: 360px
+---------------------------------------------------------- */
+
+@media (max-width: 360px) {
+
+  :root {
+    --section-px: 1rem;
+  }
+
+  .about__stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .stat-item__value {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+}
+
+/* ----------------------------------------------------------
+   PRINT STYLES
+---------------------------------------------------------- */
+
+@media print {
+
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  #loader,
+  .nav,
+  .hamburger,
+  .mobile-menu,
+  .scroll-line-wrap,
+  .scroll-top,
+  .toast,
+  #marquee {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+}
+
+/* ----------------------------------------------------------
+   PREFERS-REDUCED-MOTION (comprehensive)
+---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration:        0.01ms !important;
+    animation-delay:           0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:       0.01ms !important;
+    transition-delay:          0ms !important;
+  }
+
+  .animate-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .marquee__track {
+    animation: none;
+  }
+
+  .hero__name .line,
+  .hero__tagline {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .scroll-line-wrap,
+  .scroll-line {
+    animation: none !important;
+  }
+
+  .loader__shape {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .hero__glow {
+    animation: none !important;
+  }
+
+  .card:hover,
+  .service-item:hover {
+    transform: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+}
+
+/* ----------------------------------------------------------
+   HIGH CONTRAST MODE
+---------------------------------------------------------- */
+
+@media (forced-colors: active) {
+
+  .btn--primary {
+    background-color: ButtonText;
+    color: ButtonFace;
+    border-color: ButtonText;
+  }
+
+  .btn--outline {
+    border-color: ButtonText;
+    color: ButtonText;
+  }
+
+  .badge {
+    border-color: ButtonText;
+    color: ButtonText;
+  }
+
+  .service-item,
+  .exp-item {
+    border-color: ButtonText;
+  }
+
+  .project-tile {
+    border: 1px solid ButtonText;
+  }
+
+  .scroll-line {
+    background: ButtonText;
+  }
+
+  .back-to-top,
+  .social-text-link,
+  .cta-link {
+    color: LinkText;
+  }
+
+}

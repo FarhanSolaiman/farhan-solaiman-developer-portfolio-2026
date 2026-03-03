@@ -1,0 +1,366 @@
+/* ============================================================
+   ANIMATIONS.CSS — @keyframes & Animation Utility Classes
+   Grilled Pixels-inspired — dramatic reveals, far travel
+   Farhan Solaiman
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   @KEYFRAMES — SCROLL REVEALS
+   Grilled Pixels: elements travel FAR before revealing
+   60-80px minimum, 100px+ for directional variants
+---------------------------------------------------------- */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ----------------------------------------------------------
+   @KEYFRAMES — LOADER / INTRO
+---------------------------------------------------------- */
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleInBounce {
+  0%   { opacity: 0; transform: scale(0.4); }
+  70%  { transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ----------------------------------------------------------
+   @KEYFRAMES — MARQUEE
+---------------------------------------------------------- */
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ----------------------------------------------------------
+   @KEYFRAMES — SCROLL INDICATOR
+---------------------------------------------------------- */
+
+/* 1px vertical line that draws and erases (anthonydesigner.com style) */
+@keyframes scrollLine {
+  0%      { transform-origin: 0% 0%;   transform: scale(1,0); }
+  50%     { transform-origin: 0% 0%;   transform: scale(1,1); }
+  50.001% { transform-origin: 0% 100%; transform: scale(1,1); }
+  100%    { transform-origin: 0% 100%; transform: scale(1,0); }
+}
+
+/* Variant without translateX — for positional variants */
+@keyframes pulseDown {
+  0%, 100% { opacity: 1;   transform: translateY(0);  }
+  50%       { opacity: 0.4; transform: translateY(8px); }
+}
+
+/* ----------------------------------------------------------
+   @KEYFRAMES — TOAST
+---------------------------------------------------------- */
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ----------------------------------------------------------
+   @KEYFRAMES — HERO TEXT (dramatic reveal)
+   Grilled Pixels: large translateY + skew for editorial impact
+---------------------------------------------------------- */
+
+@keyframes heroWordReveal {
+  from {
+    opacity: 0;
+    transform: translateY(120%) skewX(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) skewX(0deg);
+  }
+}
+
+/* ----------------------------------------------------------
+   @KEYFRAMES — AMBIENT / BACKGROUND
+---------------------------------------------------------- */
+
+@keyframes ambientGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1);    }
+  50%       { opacity: 1;   transform: scale(1.06); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ----------------------------------------------------------
+   @KEYFRAMES — LINE DRAW
+---------------------------------------------------------- */
+
+@keyframes drawLine {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* ----------------------------------------------------------
+   @KEYFRAMES — SHIMMER
+---------------------------------------------------------- */
+
+@keyframes shimmer {
+  from { left: -100%; }
+  to   { left: 200%;  }
+}
+
+/* ----------------------------------------------------------
+   SCROLL REVEAL — Base (hidden) State
+   Grilled Pixels: 70px default travel (was 28px)
+   JS adds .visible class to trigger
+---------------------------------------------------------- */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(70px);
+  transition:
+    opacity   var(--dur-slow) var(--ease-medium),
+    transform var(--dur-slow) var(--ease-medium);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Directional variants — Grilled Pixels: far travel 100px+ */
+.animate-on-scroll.from-left {
+  transform: translateX(-100px);
+}
+
+.animate-on-scroll.from-left.visible {
+  transform: translateX(0);
+}
+
+.animate-on-scroll.from-right {
+  transform: translateX(100px);
+}
+
+.animate-on-scroll.from-right.visible {
+  transform: translateX(0);
+}
+
+.animate-on-scroll.from-below {
+  transform: translateY(80px);
+}
+
+.animate-on-scroll.from-below.visible {
+  transform: translateY(0);
+}
+
+/* Extra far — for hero-adjacent sections */
+.animate-on-scroll.from-far-left {
+  transform: translateX(-140px);
+}
+
+.animate-on-scroll.from-far-left.visible {
+  transform: translateX(0);
+}
+
+.animate-on-scroll.from-far-right {
+  transform: translateX(140px);
+}
+
+.animate-on-scroll.from-far-right.visible {
+  transform: translateX(0);
+}
+
+.animate-on-scroll.scale-in {
+  transform: scale(0.92) translateY(24px);
+}
+
+.animate-on-scroll.scale-in.visible {
+  transform: scale(1) translateY(0);
+}
+
+/* ----------------------------------------------------------
+   STAGGER DELAY UTILITIES
+   Grilled Pixels: slightly longer delays for editorial feel
+---------------------------------------------------------- */
+
+.delay-1 { transition-delay: 80ms; }
+.delay-2 { transition-delay: 160ms; }
+.delay-3 { transition-delay: 260ms; }
+.delay-4 { transition-delay: 360ms; }
+.delay-5 { transition-delay: 460ms; }
+.delay-6 { transition-delay: 560ms; }
+
+.anim-delay-1 { animation-delay: 80ms; }
+.anim-delay-2 { animation-delay: 160ms; }
+.anim-delay-3 { animation-delay: 260ms; }
+.anim-delay-4 { animation-delay: 360ms; }
+.anim-delay-5 { animation-delay: 460ms; }
+.anim-delay-6 { animation-delay: 560ms; }
+
+/* ----------------------------------------------------------
+   HERO LINE ANIMATION
+   JS reveals .line elements by setting opacity; CSS provides transition
+---------------------------------------------------------- */
+
+.hero__tagline {
+  animation: fadeInUp var(--dur-slow) var(--ease-medium) both;
+  animation-delay: 580ms;
+}
+
+.scroll-line-wrap {
+  animation: fadeIn var(--dur-slow) var(--ease-medium) 800ms both;
+}
+
+.scroll-line {
+  animation: scrollLine 2s cubic-bezier(.8,0,.2,1) 1200ms infinite;
+}
+
+/* ----------------------------------------------------------
+   LOADER SHAPE STAGGER
+---------------------------------------------------------- */
+
+.loader__shape:nth-child(1) { animation-delay: 0ms; }
+.loader__shape:nth-child(2) { animation-delay: 150ms; }
+.loader__shape:nth-child(3) { animation-delay: 300ms; }
+
+/* ----------------------------------------------------------
+   HOVER MICRO-INTERACTIONS
+---------------------------------------------------------- */
+
+.hover-lift {
+  transition: transform var(--dur-fast) var(--ease-bounce);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-glow {
+  transition: box-shadow var(--dur-normal) var(--ease-smooth);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--glow-accent);
+}
+
+.hover-scale {
+  transition: transform var(--dur-fast) var(--ease-bounce);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* ----------------------------------------------------------
+   PREFERS-REDUCED-MOTION OVERRIDE
+---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:        0.01ms !important;
+    animation-delay:           0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:       0.01ms !important;
+    transition-delay:          0ms !important;
+  }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .marquee__track {
+    animation: none;
+  }
+
+  .hero__name .line,
+  .hero__tagline {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .scroll-line-wrap,
+  .scroll-line {
+    animation: none;
+  }
+
+  .loader__shape {
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero__glow {
+    animation: none;
+  }
+}
