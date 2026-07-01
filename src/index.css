@@ -1,0 +1,175 @@
+/* ============================================================
+   index.css — Design tokens, reset, base + shared styles
+   Aesthetic: warm paper / editorial. Cream canvas, espresso ink,
+   terracotta accent + deep sage. Serif display (Fraunces).
+   ============================================================ */
+
+:root {
+  /* Palette — warm paper */
+  --bg: #f3efe6;
+  --bg-2: #eae3d6;         /* recessed */
+  --paper: #fbf9f3;        /* raised cards */
+  --paper-2: #f7f3ea;
+
+  --line: rgba(28, 24, 18, 0.12);
+  --line-strong: rgba(28, 24, 18, 0.24);
+
+  --ink: #1f1b16;
+  --ink-soft: #423b31;
+  --ink-dim: #726a5c;
+  --ink-faint: #a49a89;
+
+  --accent: #c05a37;       /* terracotta */
+  --accent-2: #4a5d52;     /* deep sage */
+  --accent-3: #c79a3f;     /* warm ochre */
+  --accent-wash: rgba(192, 90, 55, 0.1);
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-alt: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.55s;
+
+  /* Layout */
+  --maxw: 1240px;
+  --pad: clamp(1.25rem, 5vw, 4rem);
+  --radius: 18px;
+
+  /* Elevation */
+  --shadow-sm: 0 2px 10px -4px rgba(60, 45, 30, 0.18);
+  --shadow: 0 24px 60px -28px rgba(60, 42, 26, 0.4);
+  --shadow-lg: 0 40px 90px -30px rgba(60, 42, 26, 0.45);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+::selection { background: var(--accent); color: #fdf6ef; }
+
+/* Custom cursor takes over on fine pointers */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor * { cursor: none; }
+}
+
+/* ---------- Layout helpers ---------- */
+.container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad); }
+.section { position: relative; padding-block: clamp(5rem, 12vh, 9rem); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin-top: 1rem;
+}
+.section-title em { font-style: italic; color: var(--accent); }
+
+.section-head { margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+
+.text-dim { color: var(--ink-dim); }
+
+/* ---------- Chips / tags ---------- */
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.34rem 0.74rem;
+  background: var(--paper);
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.chip:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease), background 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  will-change: transform;
+}
+.btn--primary { background: var(--accent); color: #fdf6ef; border-color: var(--accent); font-weight: 500; }
+.btn--primary:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.btn--ghost { color: var(--ink); }
+.btn--ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* ---------- Divider ---------- */
+.hr-glow {
+  height: 1px;
+  border: 0;
+  background: var(--line);
+}
